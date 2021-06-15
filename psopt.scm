@@ -32,7 +32,7 @@
 (define-public psopt
    (package
      (name "psopt")
-     (version "5.0.0")
+     (version "5.0.1")
      (source (origin
                (method git-fetch)
                (uri (git-reference
@@ -41,7 +41,7 @@
                (file-name (git-file-name name version))
                (sha256
                 (base32
-                 "0y56lag51xdmpcak0wydzrkghypfn884nw8rd62gwgzgxgz0ls9f"))))
+                 "15bi7s1dnvm0hhzidr5bnz98rhb6yhz9q177s1yd43mqb70waa6h"))))
      (build-system cmake-build-system)
      (arguments
       `(#:tests? #f ; no test suite
