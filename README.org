@@ -1,1 +1,12 @@
 ecbrown's personal Guix repository. Use at your own risk.
+
+#BEGIN_SRC guile
+(channel
+ (name 'ecbrown-guix)
+ (url "https://ericcbrown.com/git/ecbrown-guix.git")
+ (introduction
+  (make-channel-introduction
+   "72e02daa4cf59a5e591387e299729f2509128b58"
+   (openpgp-fingerprint
+    "AA5F 523D FD6D 0478 8505 6A7D C1D5 F8F0 85BF 4CF3"))))
+#+END_SRC
