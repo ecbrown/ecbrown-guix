@@ -21,7 +21,6 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages maths)
-  #:use-module (gnu packages mpi)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages python)
   #:use-module (gnu packages shells)
@@ -30,15 +29,10 @@
   #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (guix git-download)
-  #:use-module (guix hg-download)
   #:use-module (guix utils)
-  #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
-  #:use-module (guix build-system python)
-  #:use-module (guix build-system trivial)
   #:use-module (srfi srfi-1)
-  #:use-module (srfi srfi-26)
-  )
+  #:use-module (srfi srfi-26))
 
 (define-public dalton
   (package
@@ -50,34 +44,31 @@
        (uri (git-reference
          (url "https://gitlab.com/dalton/dalton")
          (commit  version)
-	 (recursive? #t)))
+         (recursive? #t)))
        (file-name (git-file-name name version))
        (sha256
         (base32
          "1zk47wzpnq81mqx72y5rknhbzksqfhg5a0bj07n1zxw7hs0k6fpv"))
        (modules '((guix build utils)))
        (snippet
-	'(begin
+        '(begin
            (substitute* "cmake/math/MathLibs.cmake"
              (("OPENBLAS_BLAS_LIBS   openblas")
               "OPENBLAS_BLAS_LIBS   openblas_ilp64"))))))
     (build-system cmake-build-system)
     (inputs
-     `(("coreutils" ,coreutils)
-       ("openblas-ilp64" ,openblas-ilp64)
-       ("openmpi" ,openmpi)
+     `(("openblas-ilp64" ,openblas-ilp64)
        ("python" ,python)
-       ("python-wrapper" ,python-wrapper)
-       ("which" ,which)))
+       ("python-wrapper" ,python-wrapper)))
     (native-inputs
      `(("gfortran" ,gfortran)
        ("git" ,git)
-       ("python" ,python)
-       ("python-wrapper" ,python-wrapper)
        ("pkg-config" ,pkg-config)
-       ("tcsh" ,tcsh)))
+       ("tcsh" ,tcsh)
+       ("which" ,which)))
     (arguments
-     `(; Current failures (of over 400 tests)
+     `(; Note that tests can take a long time
+       ; Current failures (of over 400 tests)
        ; 25 - dft_optimize (Failed)
        ; 38 - walk_solvmag (Failed)
        ; 39 - walk_vibave (Failed)
@@ -95,9 +86,28 @@
          (add-after 'unpack 'setenv
            (lambda _
              (setenv "MATH_ROOT" (string-append
-				  (assoc-ref %build-inputs "openblas-ilp64"))))))
+                                  (assoc-ref %build-inputs "openblas-ilp64")))))
+         (add-after 'install 'install-sh-symlink
+           (lambda* (#:key outputs #:allow-other-keys)
+             ;; Add links to dalton and tools
+             (let ((out (assoc-ref outputs "out")))
+               (mkdir-p (string-append out "/bin"))
+               (symlink (string-append out "/dalton/dalton")
+                        (string-append out "/bin/dalton"))
+               (symlink (string-append out "/dalton/tools/aces2dalton")
+                        (string-append out "/bin/aces2dalton"))
+               (symlink (string-append out "/dalton/tools/distances")
+                        (string-append out "/bin/distances"))
+               (symlink (string-append out "/dalton/tools/FChk2HES")
+                        (string-append out "/bin/Fchk2HES"))
+               (symlink (string-append out "/dalton/tools/xyz2dalton")
+                        (string-append out "/bin/xyz2dalton"))
+               (chmod (string-append out "/dalton/tools/aces2dalton") #o755)
+               (chmod (string-append out "/dalton/tools/distances") #o755)
+               (chmod (string-append out "/dalton/tools/FChk2HES") #o755)
+               (chmod (string-append out "/dalton/tools/xyz2dalton") #o755)))))
        #:configure-flags (list "-DBLAS_TYPE=OPENBLAS"
-			       "-DENABLE_64BIT_INTEGERS=1")))
+                               "-DENABLE_64BIT_INTEGERS=1")))
     (home-page "https://daltonprogram.org/")
     (synopsis "Electronic structure theory and molecular properties")
     (description "Dalton provides an extensive functionality for the calculations of
