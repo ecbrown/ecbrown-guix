@@ -19,6 +19,7 @@
 (define-module (dalton)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (gnu packages)
+  #:use-module (gnu packages commencement)
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages maths)
   #:use-module (gnu packages pkg-config)
@@ -52,6 +53,9 @@
        (modules '((guix build utils)))
        (snippet
         '(begin
+	   (substitute* "DALTON/abacus/ptrbuf.h"
+             (("MAXCHN = 200")
+              "MAXCHN = 400"))
            (substitute* "cmake/math/MathLibs.cmake"
              (("OPENBLAS_BLAS_LIBS   openblas")
               "OPENBLAS_BLAS_LIBS   openblas_ilp64"))))))
@@ -59,13 +63,13 @@
     (inputs
      `(("openblas-ilp64" ,openblas-ilp64)
        ("python" ,python)
-       ("python-wrapper" ,python-wrapper)))
+       ("python-wrapper" ,python-wrapper)
+       ("which" ,which)))
     (native-inputs
      `(("gfortran" ,gfortran)
        ("git" ,git)
        ("pkg-config" ,pkg-config)
-       ("tcsh" ,tcsh)
-       ("which" ,which)))
+       ("tcsh" ,tcsh)))
     (arguments
      `(; Note that tests can take a long time
        ; Current failures (of over 400 tests)
