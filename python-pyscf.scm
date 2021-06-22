@@ -128,14 +128,19 @@
    (name "python-pyscf")
    (version "1.7.6")
    (source (origin
-            (method url-fetch)
-            (uri (pypi-uri "pyscf" version))
+             (method git-fetch)
+             (uri (git-reference
+                   (url "https://github.com/pyscf/pyscf")
+                   (commit (string-append "v" version))
+                   (recursive? #t)))
+             (file-name (git-file-name name version))
             (sha256
              (base32
-              "1cy9ynamwsaxscd9nb5r2hyvnsi95yxv16ja5bdkrm9jw1qc0laa"))))
+              "1plicf3df732mcwzsinfbmlzwwi40sh2cxy621v7fny2hphh14dl"))))
    (build-system python-build-system)
    (inputs
-    `(("libcint" ,libcint)
+    `(("openblas" ,openblas)
+      ("libcint" ,libcint)
       ("libxc" ,libxc)
       ("python" ,python)
       ("python-wrapper" ,python-wrapper)
@@ -150,23 +155,24 @@
       ("python-setuptools" ,python-setuptools)
       ("python-setuptools-scm" ,python-setuptools-scm)))
    (arguments
-    `(#:tests? #f
-      #:configure-flags (list "-DBUILD_LIBCINT=0"
-                              "-DBUILD_LIBXC=0"
-                              "-DBUILD_XCFUN=0")
-      #:phases
+    `(#:phases
        (modify-phases %standard-phases
          (add-before 'build 'configure
            (lambda* (#:key inputs outputs #:allow-other-keys)
              (let (;(out (assoc-ref outputs "out"))
-		   (libcint (assoc-ref %build-inputs "libcint"))
+                   (libcint (assoc-ref %build-inputs "libcint"))
                    (libxc (assoc-ref %build-inputs "libxc"))
                    (xcfun (assoc-ref %build-inputs "xcfun")))
                (setenv "PYSCF_INC_DIR"
                        (string-append libcint ":"
                                       libxc ":"
                                       xcfun))))))))
-   (home-page "")
-   (synopsis "")
-   (description "")
-   (license license:mpl2.0)))
+   (home-page "https://pyscf.org/")
+   (synopsis "Electronic structure theory suite in Python and C")
+   (description "The Python-based Simulations of Chemistry Framework (PySCF) is a
+collection of electronic structure modules powered by Python. The
+package provides a simple, lightweight, and efficient platform for
+quantum chemistry calculations and methodology development. PySCF can
+be used to simulate the properties of molecules, crystals, and custom
+Hamiltonians using mean-field and post-mean-field methods.")
+   (license license:asl2.0)))

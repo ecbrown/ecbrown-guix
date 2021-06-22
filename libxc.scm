@@ -143,6 +143,8 @@
        ("libtool" ,libtool)
        ("perl" ,perl)
        ("pkg-config" ,pkg-config)))
+    (arguments
+     `(#:configure-flags (list "--enable-shared")))
     (home-page "")
     (synopsis "")
     (description "")
