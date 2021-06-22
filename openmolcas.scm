@@ -123,11 +123,12 @@
                (copy-recursively (string-append out "/sbin")
                                  (string-append out "/share/openmolcas/sbin"))
                (delete-file-recursively (string-append out "/sbin"))))))
-       #:configure-flags (list
-                          "-DOPENMP=ON"
-                          "-DLINALG=OpenBLAS"
-                          (string-append "-DOPENBLASROOT="
-                                         (assoc-ref %build-inputs "openblas-ilp64")))))
+       #:configure-flags
+       (list
+        "-DOPENMP=ON"
+        "-DLINALG=OpenBLAS"
+        (string-append "-DOPENBLASROOT="
+                       (assoc-ref %build-inputs "openblas-ilp64")))))
     (home-page "https://gitlab.com/Molcas/OpenMolcas")
     (synopsis "Electronic structure theory with multiconfigurational methods")
     (description "OpenMolcas is a quantum chemistry software package.  It includes
