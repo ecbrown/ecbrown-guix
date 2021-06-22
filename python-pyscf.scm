@@ -133,31 +133,39 @@
             (sha256
              (base32
               "1cy9ynamwsaxscd9nb5r2hyvnsi95yxv16ja5bdkrm9jw1qc0laa"))))
-   (build-system cmake-build-system)
+   (build-system python-build-system)
    (inputs
     `(("libcint" ,libcint)
       ("libxc" ,libxc)
       ("python" ,python)
-      ("python-numpy" ,python-numpy)
-      ("python-scipy" ,python-scipy)
+      ("python-wrapper" ,python-wrapper)
       ("xcfun" ,xcfun)))
    (native-inputs
-    `(;("pkgconfig" ,pkgconfig)
-      ;("libcint" ,libcint)
-      ("cmake" ,cmake)
-      ("python-setuptools" ,python-setuptools) ; Won't build without this.
-      ("python-setuptools-scm" ,python-setuptools-scm)))
+    `(("cmake" ,cmake)
+      ("gcc" ,gcc)))
    (propagated-inputs
-    `(;("libcint" ,libcint)
-      ;("libxc" ,libxc)
-      ;("python-toml" ,python-toml)
-      ;("python-flake8" ,python-flake8)
-      ))
+    `(("python-h5py" ,python-h5py)
+      ("python-numpy" ,python-numpy)
+      ("python-scipy" ,python-scipy)
+      ("python-setuptools" ,python-setuptools)
+      ("python-setuptools-scm" ,python-setuptools-scm)))
    (arguments
     `(#:tests? #f
-      #:configure-flags '((string-append "-DPYSCF_INC_DIR="
-					 (assoc-ref %build-inputs "libcint")
-					 "/include"))))
+      #:configure-flags (list "-DBUILD_LIBCINT=0"
+                              "-DBUILD_LIBXC=0"
+                              "-DBUILD_XCFUN=0")
+      #:phases
+       (modify-phases %standard-phases
+         (add-before 'build 'configure
+           (lambda* (#:key inputs outputs #:allow-other-keys)
+             (let (;(out (assoc-ref outputs "out"))
+		   (libcint (assoc-ref %build-inputs "libcint"))
+                   (libxc (assoc-ref %build-inputs "libxc"))
+                   (xcfun (assoc-ref %build-inputs "xcfun")))
+               (setenv "PYSCF_INC_DIR"
+                       (string-append libcint ":"
+                                      libxc ":"
+                                      xcfun))))))))
    (home-page "")
    (synopsis "")
    (description "")
