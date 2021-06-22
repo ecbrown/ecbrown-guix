@@ -139,17 +139,17 @@
               "1plicf3df732mcwzsinfbmlzwwi40sh2cxy621v7fny2hphh14dl"))))
    (build-system python-build-system)
    (inputs
-    `(("openblas" ,openblas)
+    `(("openblas-ilp64" ,openblas-ilp64)
       ("libcint" ,libcint)
       ("libxc" ,libxc)
-      ("python" ,python)
-      ("python-wrapper" ,python-wrapper)
       ("xcfun" ,xcfun)))
    (native-inputs
     `(("cmake" ,cmake)
       ("gcc" ,gcc)))
    (propagated-inputs
-    `(("python-h5py" ,python-h5py)
+    `(("python" ,python)
+      ("python-wrapper" ,python-wrapper)
+      ("python-h5py" ,python-h5py)
       ("python-numpy" ,python-numpy)
       ("python-scipy" ,python-scipy)
       ("python-setuptools" ,python-setuptools)
