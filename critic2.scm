@@ -29,7 +29,6 @@
   #:use-module (gnu packages slang)
   #:use-module (gnu packages fontutils)
   #:use-module (gnu packages gcc)
-  #:use-module (gnu packages gl)
   #:use-module (gnu packages maths)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages readline)
@@ -81,11 +80,7 @@
        ("ncurses" ,ncurses)
        ("readline" ,readline)
        ("slang" ,slang)
-       ("qhull" ,qhull)
-       ("freetype" ,freetype)
-       ("glfw" ,glfw)
-       ("glm" ,glm)
-       ))
+       ("qhull" ,qhull)))
     (native-inputs
      `(("automake" ,automake)
        ("autoconf" ,autoconf)
@@ -105,8 +100,8 @@
 	     (invoke "aclocal")
 	     (invoke "automake" "--add-missing")
 	     (invoke "autoconf"))))
-       #:configure-flags (list "-DENABLE_GUI=1"
-			       "-DENABLE_BUILD_STATIC=1")))
+       #:configure-flags (list "-DENABLE_GUI=0"
+			       "-DENABLE_BUILD_STATIC=0")))
     (home-page "https://aoterodelaroza.github.io/critic2")
     (synopsis "Framework for the Quantum Theory of Atoms in Molecules (QTAIM)" )
     (description "Critic2 is a program for the analysis of quantum
