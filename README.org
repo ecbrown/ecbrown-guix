@@ -3,7 +3,7 @@ ecbrown's personal Guix repository. Use at your own risk.
 #+BEGIN_SRC scheme
 (channel
  (name 'ecbrown-guix)
- (url "https://ericcbrown.com/git/ecbrown-guix.git")
+ (url "https://ericcbrown.com/ecbrown/ecbrown-guix.git")
  (introduction
   (make-channel-introduction
    "72e02daa4cf59a5e591387e299729f2509128b58"
