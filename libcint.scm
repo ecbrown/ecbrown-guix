@@ -123,7 +123,7 @@
 (define-public libcint
   (package
     (name "libcint")
-    (version "4.4.1")
+    (version "4.4.5")
     (source
      (origin
        (method git-fetch)
@@ -133,7 +133,7 @@
        (file-name (git-file-name name version))
        (sha256
         (base32
-         "0skl1aznv4sh62zd8pmb12zc66qgql26xhhncmxpzv6xs069cxc0"))))
+         "0kh0xhv1i5ixilirxxb29pglcgz8m37dfhswifgzlf187jh95jrh"))))
     (build-system cmake-build-system)
     (inputs
      `(;("automake" ,automake)
