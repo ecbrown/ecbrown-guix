@@ -77,7 +77,8 @@
      `(("gfortran" ,gfortran)
        ("git" ,git)
        ("pkg-config" ,pkg-config)))
-    (propagated-inputs `(("python-pyparsing" ,python-pyparsing)))
+    (propagated-inputs `(("python-pyparsing" ,python-pyparsing)
+                         ("python-setuptools" ,python-setuptools)))
     (arguments
      `(#:phases
        (modify-phases %standard-phases
