@@ -32,7 +32,7 @@
 (define-public psopt
    (package
      (name "psopt")
-     (version "5.0.2")
+     (version "5.02")
      (source (origin
                (method git-fetch)
                (uri (git-reference
