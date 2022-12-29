@@ -35,7 +35,7 @@
 (define-public libint
   (package
     (name "libint")
-     (version "2.6.0")
+     (version "2.7.2")
      (source (origin
                (method git-fetch)
                (uri (git-reference
