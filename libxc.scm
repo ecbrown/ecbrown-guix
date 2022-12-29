@@ -123,7 +123,7 @@
 (define-public libxc
   (package
     (name "libxc")
-    (version "5.1.5")
+    (version "5.2.3")
     (source
      (origin
        (method git-fetch)
