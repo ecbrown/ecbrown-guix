@@ -41,7 +41,7 @@
                (file-name (git-file-name name version))
                (sha256
                 (base32
-                 "15bi7s1dnvm0hhzidr5bnz98rhb6yhz9q177s1yd43mqb70waa6h"))))
+                 "1xclfhdcgwjq7ibrm3x6kx52z3a5h4kaghxxfvql5fv7xh21jc8g"))))
      (build-system cmake-build-system)
      (arguments
       `(#:tests? #f ; no test suite
