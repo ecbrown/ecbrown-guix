@@ -38,7 +38,7 @@
 (define-public dalton
   (package
     (name "dalton")
-    (version "2020.0")
+    (version "2020.1")
     (source
      (origin
        (method git-fetch)
