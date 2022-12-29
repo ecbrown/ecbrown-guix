@@ -52,7 +52,7 @@
              (file-name (git-file-name name version))
              (sha256
               (base32
-               "0m8r2vplsx4hd7p77gzg8akf1r3z8r2vd2s2kbd891llbhgvhx3q"))))
+               "1c01flf0xlm68dsv0a4n6bxglyj3x5mj8shmxglfpywbf74i3vnb"))))
    (build-system cmake-build-system)
    (propagated-inputs
     `(("python" ,python)
