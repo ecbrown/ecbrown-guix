@@ -49,7 +49,7 @@
        (file-name (git-file-name name version))
        (sha256
         (base32
-         "1zk47wzpnq81mqx72y5rknhbzksqfhg5a0bj07n1zxw7hs0k6fpv"))
+         "0hrm6jc17969cpjzz435dlv0p9hw157f613sj7is7ynjsvp1hp1z"))
        (modules '((guix build utils)))
        (snippet
         '(begin
@@ -75,18 +75,7 @@
        ("tcsh" ,tcsh)))
     (arguments
      `(; Note that tests can take a long time
-       ; Current failures (of over 400 tests)
-       ; 25 - dft_optimize (Failed)
-       ; 38 - walk_solvmag (Failed)
-       ; 39 - walk_vibave (Failed)
-       ; 65 - energy_localize_selected (Failed)
-       ; 75 - geoopt_numgrd (Failed)
-       ; 77 - geoopt_preopt2 (Failed)
-       ; 81 - geoopt_prop3_ex (Failed)
-       ; 87 - geoopt_mp2froz (Failed)
-       ; 89 - geoopt_freeze (Failed)
-       ;110 - prop_soppa_vibavg_twobas (Failed)
-       ;136 - prop_roa (Failed)
+       ; and some tests fail
        #:tests? #f
        #:phases
        (modify-phases %standard-phases
