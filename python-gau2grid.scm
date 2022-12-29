@@ -42,7 +42,7 @@
 (define-public python-gau2grid
   (package
    (name "python-gau2grid")
-   (version "2.0.6")
+   (version "2.0.7")
    (source (origin
              (method git-fetch)
              (uri (git-reference
