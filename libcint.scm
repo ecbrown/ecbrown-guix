@@ -123,7 +123,7 @@
 (define-public libcint
   (package
     (name "libcint")
-    (version "4.4.5")
+    (version "5.1.7")
     (source
      (origin
        (method git-fetch)
@@ -135,25 +135,11 @@
         (base32
          "0kh0xhv1i5ixilirxxb29pglcgz8m37dfhswifgzlf187jh95jrh"))))
     (build-system cmake-build-system)
-    (inputs
-     `(;("automake" ,automake)
-       ;("autoconf" ,autoconf)
-       ;("bash" ,bash)
-       ("openblas" ,openblas)
-       ;("libtool" ,libtool)
-       ;("perl" ,perl)
-       ;("python" ,python)
-       ;("pkg-config" ,pkg-config)
-       ))
+    (inputs `(("openblas" ,openblas)))
     (native-inputs
-     `(;("automake" ,automake)
-       ;("autoconf" ,autoconf)
-       ("gfortran" ,gfortran)
-       ;("libtool" ,libtool)
-       ;("perl" ,perl)
+     `(("gfortran" ,gfortran)
        ("python" ,python)
-       ("pkg-config" ,pkg-config)
-       ))
+       ("pkg-config" ,pkg-config)))
     (arguments
      `(#:tests? #f
        #:configure-flags '("-DENABLE_EXAMPLE=1"
