@@ -133,7 +133,7 @@
        (file-name (git-file-name name version))
        (sha256
         (base32
-         "0kh0xhv1i5ixilirxxb29pglcgz8m37dfhswifgzlf187jh95jrh"))))
+         "1smisb7092mmx8l7ws50h7j6zzmw88pvpps0ww0r66zygfrpgd9r"))))
     (build-system cmake-build-system)
     (inputs `(("openblas" ,openblas)))
     (native-inputs
