@@ -53,7 +53,7 @@
              (file-name (git-file-name name version))
              (sha256
               (base32
-               "1plicf3df732mcwzsinfbmlzwwi40sh2cxy621v7fny2hphh14dl"))))
+               "069rhbiw59f43z783yxda04x1xcx6crmkcxyics9gldl0b471k18"))))
    (build-system python-build-system)
    (inputs
     `(("openblas-ilp64" ,openblas-ilp64)
