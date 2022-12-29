@@ -133,7 +133,7 @@
        (file-name (git-file-name name version))
        (sha256
         (base32
-         "0cy3x2zn1bldc5i0rzislfbc8h4nqgds445jkfqjv0d1shvdy0zn"))))
+         "0cvcp7flvffzf9c2hifkdalhh8yf4fx2dpvhmj54fna741p5wjbb"))))
     (build-system gnu-build-system)
     (native-inputs
      `(("automake" ,automake)
