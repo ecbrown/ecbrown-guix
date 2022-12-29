@@ -21,6 +21,7 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages check)
   #:use-module (gnu packages cmake)
+  #:use-module (gnu packages coreutils)
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages maths)
   #:use-module (gnu packages pkg-config)
@@ -39,18 +40,14 @@
   #:use-module (libcint)
   #:use-module (libxc)
   #:use-module (xcfun)
-
   #:use-module (guix utils)
   #:use-module (guix build syscalls)
   #:use-module (gnu build linux-container)
-;  #:use-module (srfi srfi-1)
-  #:use-module (srfi srfi-26)
   #:use-module (srfi srfi-64)
   #:use-module (srfi srfi-71)
   #:use-module (system foreign)
   #:use-module ((ice-9 ftw) #:select (scandir))
   #:use-module (ice-9 match)
-
   )
 
 (define-public python-pyscf
