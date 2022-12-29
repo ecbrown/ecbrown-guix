@@ -68,7 +68,8 @@
               "MOLCAS, 'share', 'basis_library'"))))))
     (build-system cmake-build-system)
     (inputs
-     `(("hdf5" ,hdf5)
+     `(("coreutils" ,coreutils)
+       ("hdf5" ,hdf5)
        ("openblas-ilp64" ,openblas-ilp64)
        ("perl" ,perl)
        ("python" ,python)
