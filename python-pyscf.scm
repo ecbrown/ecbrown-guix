@@ -38,7 +38,20 @@
   #:use-module (srfi srfi-26)
   #:use-module (libcint)
   #:use-module (libxc)
-  #:use-module (xcfun))
+  #:use-module (xcfun)
+
+  #:use-module (guix utils)
+  #:use-module (guix build syscalls)
+  #:use-module (gnu build linux-container)
+;  #:use-module (srfi srfi-1)
+  #:use-module (srfi srfi-26)
+  #:use-module (srfi srfi-64)
+  #:use-module (srfi srfi-71)
+  #:use-module (system foreign)
+  #:use-module ((ice-9 ftw) #:select (scandir))
+  #:use-module (ice-9 match)
+
+  )
 
 (define-public python-pyscf
   (package
@@ -56,7 +69,8 @@
                "069rhbiw59f43z783yxda04x1xcx6crmkcxyics9gldl0b471k18"))))
    (build-system python-build-system)
    (inputs
-    `(("openblas-ilp64" ,openblas-ilp64)
+    `(("coreutils" ,coreutils)
+      ("openblas-ilp64" ,openblas-ilp64)
       ("libcint" ,libcint)
       ("libxc" ,libxc)
       ("xcfun" ,xcfun)))
