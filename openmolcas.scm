@@ -132,7 +132,9 @@
         "-DOPENMP=ON"
         "-DLINALG=OpenBLAS"
         (string-append "-DOPENBLASROOT="
-                       (assoc-ref %build-inputs "openblas-ilp64")))))
+                       (assoc-ref %build-inputs "openblas-ilp64"))
+        (string-append "-DEXTERNAL_LIBXC="
+                       (assoc-ref %build-inputs "libxc")))))
     (home-page "https://gitlab.com/Molcas/OpenMolcas")
     (synopsis "Electronic structure theory with multiconfigurational methods")
     (description "OpenMolcas is a quantum chemistry software package.  It includes
