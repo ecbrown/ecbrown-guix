@@ -1,5 +1,5 @@
 ;;; GNU Guix --- Functional package management for GNU
-;;; Copyright © 2021 Eric Brown <ecbrown@ericcbrown.com>
+;;; Copyright © 2021,2022 Eric Brown <ecbrown@ericcbrown.com>
 ;;;
 ;;; This file is part of GNU Guix.
 ;;;
@@ -44,7 +44,7 @@
 (define-public openmolcas
   (package
     (name "openmolcas")
-    (version "21.06")
+    (version "22.10")
     (source
      (origin
        (method git-fetch)
