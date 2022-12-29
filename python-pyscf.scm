@@ -43,7 +43,7 @@
 (define-public python-pyscf
   (package
    (name "python-pyscf")
-   (version "1.7.6")
+   (version "2.1.1")
    (source (origin
              (method git-fetch)
              (uri (git-reference
