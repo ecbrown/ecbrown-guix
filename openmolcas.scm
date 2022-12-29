@@ -38,6 +38,7 @@
   #:use-module (guix git-download)
   #:use-module (guix utils)
   #:use-module (guix build-system cmake)
+  #:use-module (libxc)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26))
 
@@ -72,6 +73,7 @@
        ("perl" ,perl)
        ("python" ,python)
        ("libxml2" ,libxml2)
+       ("libxc" ,libxc)
        ("texlive" ,texlive)))
     (native-inputs
      `(("gfortran" ,gfortran)
