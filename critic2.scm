@@ -19,7 +19,7 @@
 (define-module (critic2)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (gnu packages)
-  #:use-module (gnu packages autotools)  
+  #:use-module (gnu packages autotools)
   #:use-module (gnu packages bash)
   #:use-module (gnu packages check)
   #:use-module (gnu packages certs)
@@ -59,8 +59,8 @@
 	 (recursive? #t)))
        (file-name (git-file-name name (string-append version "dev")))
        (sha256
-        (base32         
-	 "0bjmv9gbgsj8q6g99v28g17nq31m8pdp5kqfxg95zbrd376j03h7"))
+        (base32
+	       "0bjmv9gbgsj8q6g99v28g17nq31m8pdp5kqfxg95zbrd376j03h7"))
        (modules '((guix build utils)))
        (snippet
         '(begin
@@ -72,7 +72,7 @@
      `(("bash" ,bash)
        ("git" ,git)
        ("gnuplot" ,gnuplot)
-       ("nss-certs" ,nss-certs)       
+       ("nss-certs" ,nss-certs)
        ("libcint" ,libcint)
        ("libxc" ,libxc)
        ("numdiff" ,numdiff)
